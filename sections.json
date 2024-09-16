@@ -1,0 +1,27 @@
+[
+    {
+        "name": "introduction",
+        "description": "Introduce the topic, provide background information, and state the research questions or hypotheses.",
+        "overview": "## Chapter 1: Introduction\n\n**Genre: Expository and argumentative writing**\n\nThis chapter introduces the research topic, provides background, states the problem, outlines the purpose and significance, and presents research questions or hypotheses. It uses expository writing to explain the context and argumentative writing to justify the study's importance. It also can provide personal voice about motivation and purpose.\n\n**Checklist**\n\n- Clear problem statement\n- Well-defined purpose of the study\n- Specific research questions or hypotheses\n- Background information on the topic\n- Significance of the study explained\n- Key terms defined\n- Assumptions, limitations, and delimitations addressed\n- Brief overview of methodology\n- Outline of dissertation structure"
+    },
+    {
+        "name": "literature_review",
+        "description": "Review existing literature related to your topic, identifying gaps your research will fill.",
+        "overview": "## Chapter 2: Literature Review\n\n**Genre: An evidence-based account. Analytical and critical writing.**\n\nThis chapter appropriately cites, critically analyzes and synthesizes existing research relevant to the topic. It needs to be an evidence-based account of findings from sources investigated/reviewed, using analytical writing to present, break down and evaluate previous studies, and critical writing to identify gaps and establish the theoretical framework.\n\n**Checklist**\n\n- Comprehensive search of relevant literature described\n- Conceptual or theoretical framework established\n- Critical analysis of existing research\n- Synthesis of information from multiple sources\n- Identification of gaps in current knowledge\n- Logical organization (by themes, variables, or chronology)\n- Clear connections between reviewed literature and research questions"
+    },
+    {
+        "name": "methodology",
+        "description": "Explain the research methods you used to collect and analyze data.",
+        "overview": "## Chapter 3: Methodology\n\n**Genre: Descriptive and justificatory writing**\n\nThis chapter describes in detail the research design, methods, and procedures. It uses descriptive writing to explain the methodology and justificatory writing to defend the chosen approach.\n\n**Checklist**\n\n- Research design clearly explained and justified\n- Data collection methods described in detail\n- Sampling procedures outlined (if applicable)\n- Instruments or measures explained\n- Data analysis techniques described\n- Ethical considerations addressed\n- Reliability and validity issues discussed\n- Limitations of methodology acknowledged"
+    },
+    {
+        "name": "findings_analysis",
+        "description": "Present the results of your research and analyze them in the context of your study.",
+        "overview": "## Chapter 4: Results/Findings\n\n**Genre: Objective and descriptive writing**\n\nThis chapter presents the data and findings from the research. It uses objective writing to report results without interpretation, often incorporating descriptive statistics or qualitative data presentation.\n\n**Checklist**\n\n- Findings presented clearly and objectively\n- Results organized by research questions or hypotheses\n- Appropriate use of tables, figures, or charts\n- Statistical analyses explained (for quantitative studies)\n- Themes or categories described (for qualitative studies)\n- No interpretation or discussion of results"
+    },
+    {
+        "name": "conclusion",
+        "description": "Summarize your findings, discuss implications, and suggest areas for future research.",
+        "overview": "**Genre: Interpretive and argumentative writing**\n\nThis final chapter interprets the results, draws conclusions, and discusses implications. It uses interpretive writing to explain the meaning of the findings and argumentative writing to defend the conclusions and recommendations.\n\n**Checklist**\n\n- Interpretation of results in light of research questions\n- Comparison of findings with previous research\n- Discussion of theoretical and practical implications\n- Recommendations for future research\n- Limitations of the study acknowledged\n- Conclusion that ties together the entire dissertation"
+    }
+]

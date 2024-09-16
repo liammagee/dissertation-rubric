@@ -1,0 +1,29 @@
+{% extends "base.html" %}
+
+{% block title %}Preview - Dissertation Builder{% endblock %}
+
+{% block content %}
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <div class="container-fluid">
+        <a class="navbar-brand" href="{{ url_for('home') }}">Dissertation Builder</a>
+        <button class="btn btn-primary ms-auto" onclick="window.print()">
+            <i class="fas fa-print"></i> Print
+        </button>
+    </div>
+</nav>
+
+<div class="container my-5">
+    <h1 class="text-center mb-4">Dissertation Preview</h1>
+    {% for sec in dissertation %}
+    <section class="mb-5">
+        <h2>{{ sec.name }}</h2>
+        <div>
+            {{ sec.content|safe }}
+        </div>
+    </section>
+    {% endfor %}
+    <div class="text-center mt-5">
+        <a href="{{ url_for('home') }}" class="btn btn-secondary"><i class="fas fa-arrow-left"></i> Back to Home</a>
+    </div>
+</div>
+{% endblock %}

@@ -1,0 +1,45 @@
+{% extends "base.html" %}
+
+{% block title %}Home - Dissertation Builder{% endblock %}
+
+{% block content %}
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <div class="container-fluid">
+        <a class="navbar-brand" href="{{ url_for('home') }}">Dissertation Builder</a>
+    </div>
+</nav>
+
+<div class="container my-5">
+    <h1 class="text-center mb-4">Welcome to Your Dissertation Builder</h1>
+
+    <!-- Interactive Raphaël.js Diagram -->
+    <div id="diagram-container" class="mb-5"></div>
+
+    <!-- Existing Cards (Optional, you can remove if focusing on the diagram) -->
+    <div class="row">
+        {% for sec in sections %}
+        <div class="col-md-4 mb-4">
+            <div class="card h-100">
+                <div class="card-body">
+                    <h5 class="card-title">{{ sec.name.replace('_', ' ').title() }}</h5>
+                    <p class="card-text">{{ sec.description }}</p>
+                    <a href="{{ url_for('edit_section', section=sec.name) }}" class="btn btn-primary">Edit Section</a>
+                </div>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+
+
+    <div class="text-center mt-4">
+        <a href="{{ url_for('preview') }}" class="btn btn-success btn-lg">
+            <i class="fas fa-eye"></i> Preview Dissertation
+        </a>
+    </div>
+</div>
+
+
+<!-- Include your custom JavaScript file -->
+<script src="{{ url_for('static', filename='diagram.js') }}"></script>
+
+{% endblock %}

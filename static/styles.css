@@ -1,0 +1,91 @@
+/* Import Google Fonts */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap');
+
+/* Apply the font to the body */
+body {
+    font-family: 'Inter', sans-serif;
+    background-color: #f8f9fa;
+}
+
+h1, h2, h5 {
+    font-weight: 600;
+}
+
+.navbar-brand {
+    font-weight: 600;
+}
+
+.card {
+    border: none;
+    border-radius: 0.5rem;
+}
+
+.card-body {
+    display: flex;
+    flex-direction: column;
+}
+
+.btn-primary {
+    background-color: #0d6efd;
+    border-color: #0d6efd;
+}
+
+.btn-primary:hover {
+    background-color: #0b5ed7;
+    border-color: #0a58ca;
+}
+
+.btn-success {
+    background-color: #198754;
+    border-color: #198754;
+}
+
+.btn-success:hover {
+    background-color: #157347;
+    border-color: #146c43;
+}
+
+.form-control {
+    border-radius: 0.5rem;
+}
+
+textarea.form-control {
+    resize: vertical;
+}
+
+.border-bottom {
+    border-bottom: 2px solid #dee2e6 !important;
+}
+/* Existing styles... */
+
+/* Diagram Container */
+#diagram-container {
+    width: 100%;
+    max-width: 800px;
+    height: 500px;
+    margin: auto;
+}
+
+/* Ensure the SVG scales responsively */
+#diagram-container svg {
+    width: 100%;
+    height: auto;
+}
+
+@media (max-width: 768px) {
+    #diagram-container {
+        height: 400px;
+    }
+}
+
+/* Tooltip text */
+.raphael-tooltip-text {
+    font-family: 'Inter', sans-serif;
+    font-size: 12px;
+}
+
+/* Tooltip rectangle */
+.raphael-tooltip-rect {
+    fill: #ffffcc;
+    stroke: #333;
+}

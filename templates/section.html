@@ -1,0 +1,123 @@
+{% extends "base.html" %}
+
+{% block title %}{{ section.replace('_', ' ').title() }} - Dissertation Builder{% endblock %}
+
+{% block content %}
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <div class="container-fluid">
+        <a class="navbar-brand" href="{{ url_for('home') }}">Dissertation Builder</a>
+    </div>
+</nav>
+
+<div class="container my-5">
+    <h1 class="text-center mb-4">{{ section.replace('_', ' ').title() }}</h1>
+    
+    <!-- Overview Button -->
+    <div class="text-end mb-3">
+        <button type="button" class="btn btn-outline-info" id="overview-btn">
+            <i class="fas fa-info-circle"></i> Overview
+        </button>
+    </div>
+    
+    <!-- Overview Content -->
+    <div id="overview-content" class="mb-4" style="display: none;">
+        <div class="card">
+            <div class="card-body">
+                {{ overview|safe }}
+            </div>
+        </div>
+    </div>
+    
+    <form method="post" id="content-form">
+        <input type="hidden" name="csrf_token" value="{{ csrf_token() }}">
+                
+        <div class="mb-3">
+            <textarea name="content" class="form-control" rows="15" placeholder="Write your content here...">{{ content }}</textarea>
+        </div>
+        <div class="d-flex justify-content-between">
+            <a href="{{ url_for('home') }}" class="btn btn-secondary"><i class="fas fa-arrow-left"></i> Back to Home</a>
+            <div>
+                <button type="button" class="btn btn-info" id="suggest-btn"><i class="fas fa-lightbulb"></i> Get Suggestions</button>
+                <button type="submit" class="btn btn-primary"><i class="fas fa-save"></i> Save Section</button>
+            </div>
+        </div>
+    </form>
+    <!-- Message Div for feedback -->
+    <div id="message" class="mt-3"></div>
+    
+    
+    <div id="suggestions" class="mt-4" style="display: none;">
+        <h4>Suggestions</h4>
+        <div class="alert alert-secondary" id="suggestions-content"></div>
+        <button type="button" class="btn btn-success mt-2" id="copy-suggestion-btn" disabled>
+            <i class="fas fa-copy"></i> Copy to Editor
+        </button>
+        
+    </div>
+</div>
+
+<!-- Include custom JavaScript for suggestions -->
+<script>
+    // Overview toggle functionality
+    document.getElementById('overview-btn').addEventListener('click', function() {
+        const overviewContent = document.getElementById('overview-content');
+        if (overviewContent.style.display === 'none' || overviewContent.style.display === '') {
+            overviewContent.style.display = 'block';
+            this.innerHTML = '<i class="fas fa-info-circle"></i> Hide Overview';
+        } else {
+            overviewContent.style.display = 'none';
+            this.innerHTML = '<i class="fas fa-info-circle"></i> Overview';
+        }
+    });
+
+    document.getElementById('suggest-btn').addEventListener('click', function() {
+        const content = document.querySelector('textarea[name="content"]').value;
+        // Get CSRF token from the meta tag
+        const csrfToken = document.querySelector('meta[name="csrf-token"]').getAttribute('content');
+
+        fetch('{{ url_for("get_suggestion", section=section) }}', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+                'X-CSRFToken': csrfToken  // If CSRF protection is enabled
+            },
+            body: JSON.stringify({ content: content })
+        })
+        .then(response => response.json())
+        .then(data => {
+            if (data.suggestions) {
+                document.getElementById('suggestions-content').innerText = data.suggestions;
+                document.getElementById('suggestions').style.display = 'block';
+
+                // Enable the 'Copy to Editor' button
+                document.getElementById('copy-suggestion-btn').disabled = false;
+                } else {
+                alert('Error: ' + (data.error || 'Unknown error occurred.'));
+            }
+        })
+        .catch(error => {
+            console.error('Error:', error);
+            alert('Failed to get suggestions.');
+        });
+    });
+
+    // Event listener for 'Copy to Editor' button
+    document.getElementById('copy-suggestion-btn').addEventListener('click', function() {
+        const suggestionsText = document.getElementById('suggestions-content').innerText;
+        const contentTextarea = document.querySelector('textarea[name="content"]');
+
+        // Append the suggestion to the existing content
+        contentTextarea.value += '\n\n' + suggestionsText;
+
+        // Scroll to the bottom of the textarea
+        contentTextarea.scrollTop = contentTextarea.scrollHeight;
+
+        // Provide feedback to the user
+        const messageDiv = document.getElementById('message');
+        messageDiv.innerHTML = '<div class="alert alert-success alert-dismissible fade show" role="alert">' +
+            'Suggestion copied to the editor.' +
+            '<button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>' +
+            '</div>';
+    });    
+</script>
+{% endblock %}
